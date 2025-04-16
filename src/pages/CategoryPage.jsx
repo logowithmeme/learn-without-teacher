@@ -1,47 +1,88 @@
 import React from "react";
-import careerBanner from "../assets/career-banner.png";
 import { useNavigate } from "react-router-dom";
+import careerBanner from "../assets/career-banner.png";
+
+const mainCategories = [
+  "Home",
+  "All India Govt Jobs",
+  "State Govt Jobs",
+  "Bank Jobs",
+  "Teaching Jobs",
+  "Engineering Jobs",
+  "Railway Jobs",
+  "Police/Defence Jobs",
+  "Defence Jobs",
+];
+
+const stateCategories = [
+  "AP", "TS", "MH", "UP", "WB",
+  "CG", "AS", "BR", "DL", "MP",
+];
 
 const categories = [
-  { name: "Medical Entrance", path: "/medical" },
-  { name: "Engineering Entrance", path: "/engineering" },
-  { name: "Teaching", path: "/teaching" },
-  { name: "Defence Exams", path: "/defence" },
-  { name: "Government Jobs", path: "/government" },
-  { name: "Banking", path: "/banking" },
-  { name: "Railways", path: "/railways" },
-  { name: "Police/Army", path: "/police" },
-  { name: "Others", path: "/others" },
+  "Medical Entrance",
+  "Engineering Entrance",
+  "Teaching",
+  "Defence Exams",
+  "Government Jobs",
+  "Banking",
+  "Railways",
+  "Police/Army",
+  "Others",
 ];
 
 const CategoryPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#f9f5ef] text-center px-4 py-10">
-      <h1 className="text-4xl font-bold text-[#150E46] mb-12">
+    <div className="min-h-screen bg-[#f9f5ef] text-center py-10 px-4">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#150c3b] mb-10">
         Choose Your Exam Category
       </h1>
 
-      {/* Updated Main Categories as Boxes */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
-        {categories.map((category) => (
-          <div
-            key={category.name}
-            onClick={() => navigate(category.path)}
-            className="cursor-pointer border-2 border-black px-6 py-6 rounded-xl text-lg font-semibold hover:bg-black hover:text-white transition-all"
+      {/* Main Categories */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
+        {mainCategories.map((cat, index) => (
+          <button
+            key={index}
+            className="px-4 py-2 border-2 border-black rounded-full text-sm sm:text-base hover:shadow-md transition"
           >
-            {category.name}
-          </div>
+            {cat}
+          </button>
         ))}
       </div>
 
-      {/* Banner Image */}
-      <div className="flex justify-center">
+      {/* State Categories */}
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {stateCategories.map((state, index) => (
+          <button
+            key={index}
+            className="px-4 py-1 border border-black rounded text-sm hover:bg-[#ece6da]"
+          >
+            {state}
+          </button>
+        ))}
+      </div>
+
+      {/* Entrance Exam Categories */}
+      <div className="flex flex-wrap justify-center gap-4 mb-16">
+        {categories.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => navigate("/exam")}
+            className="px-6 py-2 border border-black rounded-full text-sm sm:text-base font-medium text-[#150c3b] bg-[#f9f5ef] hover:shadow-md transition"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+
+      {/* Career Banner Image */}
+      <div className="mt-8">
         <img
           src={careerBanner}
-          alt="Career Options"
-          className="max-w-5xl w-full"
+          alt="career-banner"
+          className="w-full max-w-5xl mx-auto"
         />
       </div>
     </div>
