@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import careerBanner from "../assets/career-banner.png";
 
 const mainCategories = [
-  "Home",
-  "All India Govt Jobs",
-  "State Govt Jobs",
-  "Bank Jobs",
-  "Teaching Jobs",
-  "Engineering Jobs",
-  "Railway Jobs",
-  "Police/Defence Jobs",
-  "Defence Jobs",
+  { name: "Home", path: "/" },
+  { name: "All India Govt Jobs", path: "/all-india" },
+  { name: "State Govt Jobs", path: "#" },
+  { name: "Bank Jobs", path: "/banking" },
+  { name: "Teaching Jobs", path: "#" },
+  { name: "Engineering Jobs", path: "#" },
+  { name: "Railway Jobs", path: "#" },
+  { name: "Police/Defence Jobs", path: "#" },
+  { name: "Defence Jobs", path: "#" },
 ];
 
 const stateCategories = [
@@ -45,9 +45,10 @@ const CategoryPage = () => {
         {mainCategories.map((cat, index) => (
           <button
             key={index}
+            onClick={() => cat.path !== "#" && navigate(cat.path)}
             className="px-4 py-2 border-2 border-black rounded-full text-sm sm:text-base hover:shadow-md transition"
           >
-            {cat}
+            {cat.name}
           </button>
         ))}
       </div>
