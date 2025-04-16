@@ -1,65 +1,42 @@
 import React from "react";
 import careerBanner from "../assets/career-banner.png";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
-  "Home",
-  "All India Govt Jobs",
-  "State Govt Jobs",
-  "Bank Jobs",
-  "Engineering Jobs",
-];
-
-const extraCategories = [
-  "Teaching Jobs",
-  "Railway Jobs",
-  "Police/Defence Jobs",
-  "Defence Jobs",
-];
-
-const states = [
-  "AP", "TS", "MH", "UP", "WB", "CG", "AS", "BR", "DL", "MP", "Other States"
+  { name: "Medical Entrance", path: "/medical" },
+  { name: "Engineering Entrance", path: "/engineering" },
+  { name: "Teaching", path: "/teaching" },
+  { name: "Defence Exams", path: "/defence" },
+  { name: "Government Jobs", path: "/government" },
+  { name: "Banking", path: "/banking" },
+  { name: "Railways", path: "/railways" },
+  { name: "Police/Army", path: "/police" },
+  { name: "Others", path: "/others" },
 ];
 
 const CategoryPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-[#f9f5ef] text-center px-4 py-10">
-      <h1 className="text-4xl font-bold text-[#150E46] mb-8">
+      <h1 className="text-4xl font-bold text-[#150E46] mb-12">
         Choose Your Exam Category
       </h1>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
+      {/* Updated Main Categories as Boxes */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
         {categories.map((category) => (
-          <button
-            key={category}
-            className="border-2 border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition"
+          <div
+            key={category.name}
+            onClick={() => navigate(category.path)}
+            className="cursor-pointer border-2 border-black px-6 py-6 rounded-xl text-lg font-semibold hover:bg-black hover:text-white transition-all"
           >
-            {category}
-          </button>
+            {category.name}
+          </div>
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {extraCategories.map((category) => (
-          <button
-            key={category}
-            className="border-2 border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition"
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {states.map((state) => (
-          <button
-            key={state}
-            className="border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition"
-          >
-            {state}
-          </button>
-        ))}
-      </div>
-
+      {/* Banner Image */}
       <div className="flex justify-center">
         <img
           src={careerBanner}
