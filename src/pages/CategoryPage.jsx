@@ -5,13 +5,15 @@ import careerBanner from "../assets/career-banner.png";
 const mainCategories = [
   { name: "Home", path: "/" },
   { name: "All India Govt Jobs", path: "/all-india" },
-  { name: "State Govt Jobs", path: "#" },
+  { name: "State Govt Jobs", path: "/state" },
   { name: "Bank Jobs", path: "/banking" },
-  { name: "Teaching Jobs", path: "#" },
-  { name: "Engineering Jobs", path: "#" },
-  { name: "Railway Jobs", path: "#" },
-  { name: "Police/Defence Jobs", path: "#" },
-  { name: "Defence Jobs", path: "#" },
+  { name: "Teaching Jobs", path: "/teaching" },
+  { name: "Engineering Jobs", path: "/engineering" },
+  { name: "Railway Jobs", path: "/railways" },
+  { name: "Police/Defence Jobs", path: "/police" },
+  { name: "Defence Jobs", path: "/defence" },
+  { name: "Medical Entrance", path: "/medical" },
+  { name: "Other Exams", path: "/others" },
 ];
 
 const stateCategories = [
